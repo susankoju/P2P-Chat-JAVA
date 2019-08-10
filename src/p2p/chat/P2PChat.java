@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p2p.chat;
 
 /**
- *
- * @author DELL
+ * Day 1: August 10 2019
+ * 
+ * @author 
+ * Susan Koju
+ * 
+ * [Add your names above]
  */
 public class P2PChat {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
     
+    public static void main(String[] args) {
+        
+    }    
 }
