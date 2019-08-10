@@ -1,4 +1,4 @@
-package p2p.chat;
+package p2pChat;
 
 /**
  * Day 1: August 10 2019
