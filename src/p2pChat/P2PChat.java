@@ -24,14 +24,18 @@ public class P2PChat {
         
         
         try {
-            String serverIpAddress = "https://dell.localhost.run";
-            int serverPort = 8123;
+            String serverIpAddress = "dell.localhost.run";
+            int serverPort = 80;
             Socket s = new Socket(serverIpAddress,serverPort);
             
             Scanner scan = new Scanner(System.in);
             System.out.println("You are Connected");
             while(true){
                 String sendMsg = "";
+                
+                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                String msg = in.readLine();
+                System.out.println("Other: "+msg);
                 
                 System.out.print("You: ");
                 sendMsg = scan.nextLine();
@@ -42,28 +46,33 @@ public class P2PChat {
                 out.flush();
                 
                 
-                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                String msg = in.readLine();
-                System.out.println("Other: "+msg);
 
             }
 
             
         } catch (IOException ex) {
             System.out.println("Server not found! Exception:"+ex.getMessage());
-            server();
+            //server();
         }
     
     }
     
     public static void main(String[] args) throws IOException {
-        client();
+        System.out.println("1. Server \n2. Clent \n:");
+        Scanner scan = new Scanner(System.in);
+        int i= scan.nextInt();
+        if(i>1){
+            client();
+        }else{
+            server();
+        }
     }    
     
     public static void server() throws IOException{
         System.out.println("[Starting Server]");
-        Runtime.getRuntime().exec("ssh -R 80:localhost:8123 ssh.localhost.run");
-        ServerSocket ss = new ServerSocket(8123);
+        ServerSocket ss = new ServerSocket(65432);
+        
+        //Runtime.getRuntime().exec("ssh -R 80:localhost:8123 ssh.localhost.run");
         
         System.out.println("Server: server started");
         System.out.println("Server: waiting for client connect");
